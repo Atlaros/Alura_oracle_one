@@ -1,0 +1,65 @@
+<meta charset="UTF-8">
+
+<h1>PROGRAMA AULA 4 CACULAR IMC</h1>
+
+<script>
+function saltarLinea(){
+	document.write("<br>");
+	document.write("<br>");
+}
+function imprimir(frase){
+	document.write(frase);
+	saltarLinea();
+}
+	
+function calcularImc(peso,altura){
+	imc = peso / (altura * altura);
+	return(imc);
+}
+function calcularImc2(peso,altura,nombre){
+	imc2 = peso / (altura * altura);
+	imprimir("El IMC calculado de: " + nombre + " es " + imc2);
+}
+function calcularImc3(peso1,altura1,nombre1,peso2,altura2,nombre2,peso3,altura3,nombre3) {
+	imc1 = peso1 / (altura1 * altura1);
+	imc2 = peso2 / (altura2 * altura2);
+	imc3 = peso3 / (altura3 * altura3);
+	imprimir("El promedio del IMC calculado de: " + nombre1 + ", " + nombre2 + " y " + nombre3 + " es " + (imc1+imc2+imc3)/3);
+}
+function calcularimc4(peso,altura){
+	return((peso/altura)/2);
+}
+//pesoDiego = 99
+//alturaDiego = 1.75
+//imcDiego = pesoDiego/(alturaDiego*alturaDiego)
+//imcDiego = calcularImc(pesoDiego,alturaDiego)
+//imprimir("El IMC de Diego es: " + imcDiego)
+//pesoSamuel = 90
+//alturaSamuel = 1.73
+//imcSamuel = pesoSamuel/(alturaSamuel*alturaSamuel)
+//imprimir("El IMC de Samuel es: " + imcSamuel)
+//calcularImc2(75,1.8,"Adriana");
+//calcularImc3(99,1.75,"Diego",90,1.73,"Samuel",75,1.8,"Adrian");
+//imprimir("El promedio del IMC calculado de diego y samuel es: " + (calcularimc4(99,1.75)+calcularimc4(90,1.73))/2 );
+//imprimir("El promedio del IMC calculado de adriana y virginia es: " + (calcularimc4(60,1.60)+calcularimc4(70,1.62))/2 );
+nombre = prompt("Informe su nombre");
+pesoInformado = prompt(nombre + ", informe su peso");
+alturaInformado = prompt(nombre + ",informe su altura");
+imcCalculado = calcularimc4(pesoInformado,alturaInformado);
+imprimir(nombre + ", su imc es: " + imcCalculado);
+if (imcCalculado < 18.5) {
+	imprimir("Isuficiencia ponderal")
+}
+if (imcCalculado >= 18.6 && imcCalculado <=24.9 ) {
+	imprimir("Normal")
+}
+if (imcCalculado > 25) {
+	imprimir("Sobrepeso")
+}
+if (imcCalculado >= 25.1 && imcCalculado <= 29.9) {
+	imprimir("Pre obesidad")
+}
+if (imcCalculado >= 30) {
+	imprimir("Obesidad")
+}
+</script>
