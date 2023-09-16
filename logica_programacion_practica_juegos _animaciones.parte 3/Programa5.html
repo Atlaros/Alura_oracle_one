@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<canvas width="600" height="400"></canvas>
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d")
+
+    pincel.fillStyle = "lightgrey"; //propiedad 
+    pincel.fillRect(0,0,600,400);  //funcion
+    var radio = 10;
+    var xAleatorio;
+    var yAlaetorio;
+
+    function disenharCircuferencia(x,y,radio,color){
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+    }
+    function limpiearPantalla(){
+        pincel.clearRect(0,0,600,400);
+    }
+    /*for(var x = 20; x<600; x++){
+        disenharCircuferencia(x,20,10);
+    }*/
+    //disenharCircuferencia(20,20,10);
+    var x = 0
+    /*function actulizarPantalla(){
+        limpiearPantalla();
+        disenharCircuferencia(x,20,10);
+        x++;
+    }*/
+    function disenharObjetivo(x,y){
+        disenharCircuferencia(x,y,radio + 20,"red")
+        disenharCircuferencia(x,y,radio + 10,"white")
+        disenharCircuferencia(x,y,radio ,"red")
+    }
+    function sorteoPosicion(maximo){
+        return Math.floor(Math.random()*maximo);
+    }
+    function actulizarPantalla(){
+        limpiearPantalla();
+        disenharCircuferencia(x,20,10);
+        x++;
+    }
+    function actulizarPantalla(){
+        limpiearPantalla();
+        xAleatorio = sorteoPosicion(600);
+        yAlaetorio = sorteoPosicion(400);
+        disenharObjetivo(xAleatorio,yAlaetorio);
+        x++;
+    }
+    setInterval(actulizarPantalla,2000);
+    function disparar(evento){
+        var X = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+        if ((x < xAleatorio + radio) &&
+            (x > xAleatorio - radio) &&
+            (y < yAlaetorio + radio) &&
+            (y > yAlaetorio - radio) ){
+            alert("tiro certero");
+            }
+        //alert("tiro certero");
+    }
+    pantalla.onclick = disparar;
+    /*xaleatorio = sorteoPosicion(600);
+    yalaetorio = sorteoPosicion(400);*/
+    //disenharObjetivo(xaleatorio,yalaetorio);
+    /*disenharCircuferencia(100,100,radio + 20,"red")
+    disenharCircuferencia(100,100,radio + 10,"white")
+    disenharCircuferencia(100,100,radio ,"red")*/
+    //setInterval(actulizarPantalla,100);
+</script>
